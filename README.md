@@ -24,7 +24,11 @@ This repository documents the **"Maverick" technique** – a method to establish
 
 ## 📁 Repository structure
 maverick/
+
 ├── deploy_ultravnc_noexit.ps1 # PowerShell payload (download + reverse connection)
+
 ├── LNKplaintext.txt # Cleartext LNK (failed)
+
 ├── LNKobfuscation.txt # Obfuscated LNK (successful)
+
 └── DEMO MAVERICK.docx # Full Vietnamese report (step-by-step)
