@@ -32,3 +32,6 @@ maverick/
 ├── LNKobfuscation.txt # Obfuscated LNK (successful)
 
 └── DEMO MAVERICK.docx # Full Vietnamese report (step-by-step)
+## 🎥 Demo Video (Maverick Attack)
+
+[![Watch the demo](images/maverick-demo.png)](https://drive.google.com/file/d/1bexPI7_7HZMP6Baal3mWLU5xeZCc3I1O/view)
